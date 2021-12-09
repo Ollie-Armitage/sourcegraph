@@ -3,7 +3,10 @@ package dbstore
 import (
 	"context"
 	"database/sql"
+	"fmt"
+	"github.com/inconshreveable/log15"
 
+	"github.com/cockroachdb/errors"
 	"github.com/keegancsmith/sqlf"
 	"github.com/opentracing/opentracing-go/log"
 
@@ -56,7 +59,7 @@ func (s *Store) GetJVMDependencyRepos(ctx context.Context, filter GetJVMDependen
 	defer endObservation(1, observation.Args{})
 
 	conds := make([]*sqlf.Query, 0, 3)
-	conds = append(conds, sqlf.Sprintf("scheme = 'semanticdb'"))
+	conds = append(conds, sqlf.Sprintf("scheme = '%s'", "semanticdb")) // TODO: [Varun] deduplicate
 
 	if filter.After > 0 {
 		conds = append(conds, sqlf.Sprintf("id > %d", filter.After))
@@ -94,6 +97,74 @@ func scanJVMDependencyRepo(rows *sql.Rows, queryErr error) (dependencies []JVMDe
 	}
 
 	return dependencies, nil
+}
+
+func (s *Store) GetNPMDependencyRepos(ctx context.Context, filter GetNPMDependencyReposOpts) (repos []NPMDependencyRepo, err error) {
+	ctx, endObservation := s.operations.getNPMDependencies.With(ctx, &err, observation.Args{LogFields: []log.Field{
+		log.Int("after", filter.After),
+		log.Int("limit", filter.Limit),
+		log.Lazy(func(l log.Encoder) {
+			l.EmitInt("results", len(repos))
+		}),
+	}})
+	defer endObservation(1, observation.Args{})
+
+	conds := make([]*sqlf.Query, 0, 3)
+	conds = append(conds, sqlf.Sprintf("scheme = %s", "npmpackages")) // TODO: [Varun] deduplicate
+
+	if filter.After > 0 {
+		conds = append(conds, sqlf.Sprintf("id > %d", filter.After))
+	}
+
+	if filter.ArtifactName != "" {
+		conds = append(conds, sqlf.Sprintf("name = %s", filter.ArtifactName))
+	}
+
+	limit := sqlf.Sprintf("")
+	if filter.Limit != 0 {
+		limit = sqlf.Sprintf("LIMIT %s", filter.Limit)
+	}
+
+	query := sqlf.Sprintf(getLSIFDependencyReposQuery, sqlf.Join(conds, "AND"), limit)
+	rows, queryErr := s.Query(ctx, query)
+	if queryErr != nil {
+		log15.Error("QUERY ERROR!!!", "query", query.Query(sqlf.PostgresBindVar), "queryErr", queryErr)
+	}
+	return scanNPMDependencyRepo(rows, queryErr)
+}
+
+func scanNPMDependencyRepo(rows *sql.Rows, queryErr error) (dependencies []NPMDependencyRepo, err error) {
+	if queryErr != nil {
+		return nil, queryErr
+	}
+	defer func() { err = basestore.CloseRows(rows, err) }()
+
+	for rows.Next() {
+		var dep NPMDependencyRepo
+		if err = rows.Scan(
+			&dep.ID,
+			&dep.Package,
+			&dep.Version,
+		); err != nil {
+			return nil, errors.Wrapf(err, fmt.Sprintf("failed to scan row for Package=%s, Version=%s", dep.Package, dep.Version))
+		}
+
+		dependencies = append(dependencies, dep)
+	}
+
+	return dependencies, nil
+}
+
+type GetNPMDependencyReposOpts struct {
+	ArtifactName string
+	After        int
+	Limit        int
+}
+
+type NPMDependencyRepo struct {
+	Package string
+	Version string
+	ID      int
 }
 
 const getLSIFDependencyReposQuery = `

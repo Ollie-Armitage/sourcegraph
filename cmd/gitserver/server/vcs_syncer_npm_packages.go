@@ -14,8 +14,10 @@ import (
 	"github.com/cockroachdb/errors"
 	"github.com/inconshreveable/log15"
 
+	"github.com/sourcegraph/sourcegraph/internal/codeintel/stores/dbstore"
 	"github.com/sourcegraph/sourcegraph/internal/conf/reposource"
 	"github.com/sourcegraph/sourcegraph/internal/extsvc/npmpackages/npm"
+	"github.com/sourcegraph/sourcegraph/internal/repos"
 	"github.com/sourcegraph/sourcegraph/internal/vcs"
 	"github.com/sourcegraph/sourcegraph/schema"
 )
@@ -34,8 +36,8 @@ var (
 )
 
 type NPMPackagesSyncer struct {
-	Config *schema.NPMPackagesConnection
-	// TODO: [npm-package-support-database] Add a *dbstore.Store here.
+	Config  *schema.NPMPackagesConnection
+	DBStore repos.NPMPackagesRepoStore
 }
 
 var _ VCSSyncer = &NPMPackagesSyncer{}
@@ -176,14 +178,33 @@ func (s *NPMPackagesSyncer) packageDependencies(ctx context.Context, repoUrlPath
 	if len(timedout) > 0 {
 		log15.Warn("non-zero number of timed-out npm invocations", "count", len(timedout), "dependencies", timedout)
 	}
+	var totalConfigMatched = len(matchingDependencies)
 
-	// TODO: [npm-package-support-database] Implement DB code path.
+	dbDeps, err := s.DBStore.GetNPMDependencyRepos(ctx, dbstore.GetNPMDependencyReposOpts{
+		ArtifactName: repoUrlPath,
+	})
+
+	for _, dbDep := range dbDeps {
+		dbDepPackage, err := reposource.ParseNPMPackage(dbDep.Package)
+		if err != nil {
+			log15.Error("failed to parse npm package", "package", dbDep.Package, "message", err)
+			continue
+		}
+		if repoPackage == dbDepPackage {
+			matchingDependencies = append(matchingDependencies, reposource.NPMDependency{
+				NPMPackage: *dbDepPackage,
+				Version:    dbDep.Version,
+			})
+		}
+	}
+	var totalDBMatched = len(matchingDependencies) - totalConfigMatched
 
 	if len(matchingDependencies) == 0 {
 		return nil, errors.Errorf("no NPM dependencies for URL path %s", repoUrlPath)
 	}
 
-	log15.Info("fetched npm artifact for repo path", "repoPath", repoUrlPath, "totalConfig", len(matchingDependencies))
+	log15.Info("fetched npm artifact for repo path", "repoPath", repoUrlPath,
+		"totalDB", totalDBMatched, "totalConfig", totalConfigMatched)
 	reposource.SortNPMDependencies(matchingDependencies)
 	return matchingDependencies, nil
 }
