@@ -47,7 +47,7 @@ describe('StreamingSearchResults', () => {
             subjects: null,
             final: null,
         },
-        platformContext: { forceUpdateTooltip: sinon.spy(), settings: NEVER },
+        platformContext: { forceUpdateTooltip: sinon.spy(), settings: NEVER, requestGraphQL: () => NEVER },
 
         streamSearch: () => of(MULTIPLE_SEARCH_RESULT),
 

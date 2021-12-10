@@ -3,15 +3,15 @@ import CloseIcon from 'mdi-react/CloseIcon'
 import ExternalLinkIcon from 'mdi-react/ExternalLinkIcon'
 import React, { useCallback, useEffect } from 'react'
 
+import { SyntaxHighlightedSearchQuery } from '@sourcegraph/branded/src/components/SyntaxHighlightedSearchQuery'
 import { Link } from '@sourcegraph/shared/src/components/Link'
 import { SearchPatternType } from '@sourcegraph/shared/src/graphql-operations'
+import { SearchContextProps } from '@sourcegraph/shared/src/search'
+import { useTemporarySetting } from '@sourcegraph/shared/src/settings/temporary/useTemporarySetting'
 import { TelemetryProps } from '@sourcegraph/shared/src/telemetry/telemetryService'
 import { ThemeProps } from '@sourcegraph/shared/src/theme'
 import { buildSearchURLQuery } from '@sourcegraph/shared/src/util/url'
 
-import { SearchContextProps } from '..'
-import { SyntaxHighlightedSearchQuery } from '../../components/SyntaxHighlightedSearchQuery'
-import { useTemporarySetting } from '../../settings/temporary/useTemporarySetting'
 import { ModalVideo } from '../documentation/ModalVideo'
 import searchBoxStyle from '../input/SearchBox.module.scss'
 import searchContextDropDownStyles from '../input/SearchContextDropdown.module.scss'
@@ -180,6 +180,8 @@ interface NoResultsPageProps
         TelemetryProps,
         Pick<SearchContextProps, 'showSearchContext' | 'searchContextsEnabled'> {
     isSourcegraphDotCom: boolean
+    /** Available to web app through JS Context */
+    assetsRoot?: string
 }
 
 export const NoResultsPage: React.FunctionComponent<NoResultsPageProps> = ({
@@ -188,6 +190,7 @@ export const NoResultsPage: React.FunctionComponent<NoResultsPageProps> = ({
     isLightTheme,
     telemetryService,
     isSourcegraphDotCom,
+    assetsRoot,
 }) => {
     const [hiddenSectionIDs, setHiddenSectionIds] = useTemporarySetting('search.hiddenNoResultsSections')
 
@@ -234,6 +237,7 @@ export const NoResultsPage: React.FunctionComponent<NoResultsPageProps> = ({
                                             telemetryService.log('NoResultsVideoPlayed', { video: video.title })
                                         }
                                     }}
+                                    assetsRoot={assetsRoot}
                                 />
                             ))}
                         </Container>
