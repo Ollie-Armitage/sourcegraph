@@ -11,6 +11,7 @@ import (
 	"github.com/go-enry/go-enry/v2/data"
 
 	"github.com/sourcegraph/sourcegraph/internal/conf"
+	"github.com/sourcegraph/sourcegraph/internal/database"
 	"github.com/sourcegraph/sourcegraph/internal/search/filter"
 	"github.com/sourcegraph/sourcegraph/internal/search/query"
 
@@ -321,4 +322,13 @@ func QueryToZoektQuery(p *TextPatternInfo, typ IndexedRequestType) (zoekt.Q, err
 	}
 
 	return zoekt.Simplify(zoekt.NewAnd(and...)), nil
+}
+
+// ValidRepoRegexp returns true if the input string is a valid regexp according
+// to the special regexp dialect used to look up repos in the database (rather
+// than the generic RE dialect). For example, the database dialect does not
+// recognize `\s`.
+func ValidRepoRegexp(pattern string) bool {
+	_, _, _, err := database.ParseRepoIncludePattern(pattern)
+	return err == nil
 }

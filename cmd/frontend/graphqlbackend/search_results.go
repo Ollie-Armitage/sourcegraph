@@ -820,7 +820,7 @@ func (r *searchResolver) toSearchInputs(q query.Q) (*search.TextParameters, []ru
 			})
 		}
 
-		if args.ResultTypes.Has(result.TypeRepo) {
+		if args.ResultTypes.Has(result.TypeRepo) && search.ValidRepoRegexp(p.Pattern) {
 			jobs = append(jobs, &run.RepoSearch{
 				Args:  &args,
 				Limit: r.MaxResults(),

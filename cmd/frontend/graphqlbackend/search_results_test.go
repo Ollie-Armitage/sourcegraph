@@ -15,6 +15,7 @@ import (
 	mockrequire "github.com/derision-test/go-mockgen/testutil/require"
 	"github.com/google/go-cmp/cmp"
 	"github.com/google/zoekt"
+	"github.com/hexops/autogold"
 	"github.com/stretchr/testify/require"
 	"go.uber.org/atomic"
 
@@ -933,6 +934,31 @@ func TestIsGlobalSearch(t *testing.T) {
 			}
 		})
 	}
+}
+
+func TestToSearchInputs(t *testing.T) {
+	test := func(input string, searchType query.SearchType) string {
+		q, _ := query.Parse(input, searchType)
+		resolver := searchResolver{
+			SearchInputs: &run.SearchInputs{
+				Query:        q,
+				UserSettings: &schema.Settings{},
+				PatternType:  query.SearchTypeLiteral,
+			},
+		}
+		_, jobs, _ := resolver.toSearchInputs(resolver.Query)
+		jobNames := []string{}
+		for _, j := range jobs {
+			jobNames = append(jobNames, j.Name())
+		}
+		return strings.Join(jobNames, ",")
+	}
+
+	autogold.Want("default jobs for plain search term", "RepoUniverseText,RepoSubsetText,Repo").
+		Equal(t, test("ely", query.SearchTypeLiteral))
+
+	autogold.Want("do not create repo job for unsupported regexp", "RepoUniverseText,RepoSubsetText").
+		Equal(t, test(`\s`, query.SearchTypeRegex))
 }
 
 func TestZeroElapsedMilliseconds(t *testing.T) {

@@ -93,7 +93,7 @@ func TestParseIncludePattern(t *testing.T) {
 		},
 	}
 	for pattern, want := range tests {
-		exact, like, regexp, err := parseIncludePattern(pattern)
+		exact, like, regexp, err := ParseRepoIncludePattern(pattern)
 		if err != nil {
 			t.Fatal(pattern, err)
 		}

@@ -1560,7 +1560,7 @@ func (s *repoStore) GetFirstRepoNamesByCloneURL(ctx context.Context, cloneURL st
 }
 
 func parsePattern(p string, caseSensitive bool) ([]*sqlf.Query, error) {
-	exact, like, pattern, err := parseIncludePattern(p)
+	exact, like, pattern, err := ParseRepoIncludePattern(p)
 	if err != nil {
 		return nil, err
 	}
@@ -1632,7 +1632,7 @@ func parseCursorConds(cs types.MultiCursor) (cond *sqlf.Query, err error) {
 	return sqlf.Sprintf(fmt.Sprintf("(%s) %s (%%s)", strings.Join(columns, ", "), operator), sqlf.Join(values, ", ")), nil
 }
 
-// parseIncludePattern either (1) parses the pattern into a list of exact possible
+// ParseRepoIncludePattern either (1) parses the pattern into a list of exact possible
 // string values and LIKE patterns if such a list can be determined from the pattern,
 // and (2) returns the original regexp if those patterns are not equivalent to the
 // regexp.
@@ -1647,7 +1647,7 @@ func parseCursorConds(cs types.MultiCursor) (cond *sqlf.Query, err error) {
 // in the database. With this optimization, specifying a "repogroup:" in the query
 // will be fast (even if there are many repos) because the query can be constrained
 // efficiently to only the repos in the group.
-func parseIncludePattern(pattern string) (exact, like []string, regexp string, err error) {
+func ParseRepoIncludePattern(pattern string) (exact, like []string, regexp string, err error) {
 	re, err := regexpsyntax.Parse(pattern, regexpsyntax.OneLine)
 	if err != nil {
 		return nil, nil, "", err
