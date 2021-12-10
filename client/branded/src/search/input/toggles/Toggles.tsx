@@ -4,16 +4,15 @@ import FormatLetterCaseIcon from 'mdi-react/FormatLetterCaseIcon'
 import RegexIcon from 'mdi-react/RegexIcon'
 import React, { useCallback } from 'react'
 
+import { SearchPatternType } from '@sourcegraph/shared/src/graphql-operations'
+import { KEYBOARD_SHORTCUT_COPY_FULL_QUERY } from '@sourcegraph/shared/src/keyboardShortcuts/keyboardShortcuts'
+import { CaseSensitivityProps, PatternTypeProps, SearchContextProps } from '@sourcegraph/shared/src/search'
+import { SubmitSearchProps } from '@sourcegraph/shared/src/search/helpers'
 import { appendContextFilter } from '@sourcegraph/shared/src/search/query/transformer'
 import { findFilter, FilterKind } from '@sourcegraph/shared/src/search/query/validate'
 import { SettingsCascadeProps } from '@sourcegraph/shared/src/settings/settings'
 import { isErrorLike } from '@sourcegraph/shared/src/util/errors'
-
-import { PatternTypeProps, CaseSensitivityProps, SearchContextProps } from '../..'
-import { SearchPatternType } from '../../../graphql-operations'
-import { KEYBOARD_SHORTCUT_COPY_FULL_QUERY } from '../../../keyboardShortcuts/keyboardShortcuts'
-import { isMacPlatform } from '../../../util'
-import { SubmitSearchProps } from '../../helpers'
+import { isMacPlatform } from '@sourcegraph/shared/src/util/platformDetection'
 
 import { CopyQueryButton } from './CopyQueryButton'
 import { QueryInputToggle } from './QueryInputToggle'
@@ -34,6 +33,8 @@ export interface TogglesProps
      * being disabled, because the buttons still render normally.
      */
     interactive?: boolean
+    /** Comes from JSContext only set in the web app. */
+    structuralSearchDisabled?: boolean
 }
 
 export const getFullQuery = (
@@ -63,9 +64,8 @@ export const Toggles: React.FunctionComponent<TogglesProps> = (props: TogglesPro
         selectedSearchContextSpec,
         submitSearch,
         showCopyQueryButton = true,
+        structuralSearchDisabled,
     } = props
-
-    const structuralSearchDisabled = window.context?.experimentalFeatures?.structuralSearch === 'disabled'
 
     const submitOnToggle = useCallback(
         (args: { newPatternType: SearchPatternType } | { newCaseSensitivity: boolean }): void => {

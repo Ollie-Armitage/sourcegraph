@@ -4,21 +4,22 @@ import React, { useCallback, useState, useEffect } from 'react'
 import shallow from 'zustand/shallow'
 
 import { Form } from '@sourcegraph/branded/src/components/Form'
+import { SearchBox } from '@sourcegraph/branded/src/search/input/SearchBox'
 import { ActivationProps } from '@sourcegraph/shared/src/components/activation/Activation'
+import { KEYBOARD_SHORTCUT_FUZZY_FINDER } from '@sourcegraph/shared/src/keyboardShortcuts/keyboardShortcuts'
+import { PlatformContextProps } from '@sourcegraph/shared/src/platform/context'
+import { PatternTypeProps, SearchContextInputProps } from '@sourcegraph/shared/src/search'
+import { SubmitSearchParameters } from '@sourcegraph/shared/src/search/helpers'
 import { SettingsCascadeProps } from '@sourcegraph/shared/src/settings/settings'
 import { TelemetryProps } from '@sourcegraph/shared/src/telemetry/telemetryService'
 import { ThemeProps } from '@sourcegraph/shared/src/theme'
 import { FuzzyFinder } from '@sourcegraph/web/src/components/fuzzyFinder/FuzzyFinder'
 
-import { PatternTypeProps, OnboardingTourProps, SearchContextInputProps, parseSearchURLQuery } from '..'
+import { OnboardingTourProps, parseSearchURLQuery } from '..'
 import { AuthenticatedUser } from '../../auth'
-import { KEYBOARD_SHORTCUT_FUZZY_FINDER } from '../../keyboardShortcuts/keyboardShortcuts'
 import { useNavbarQueryState } from '../../stores'
 import { NavbarQueryState } from '../../stores/navbarSearchQueryState'
 import { getExperimentalFeatures } from '../../util/get-experimental-features'
-import { SubmitSearchParameters } from '../helpers'
-
-import { SearchBox } from './SearchBox'
 
 interface Props
     extends ActivationProps,
@@ -27,7 +28,8 @@ interface Props
         ThemeProps,
         SearchContextInputProps,
         OnboardingTourProps,
-        TelemetryProps {
+        TelemetryProps,
+        PlatformContextProps<'requestGraphQL'> {
     authenticatedUser: AuthenticatedUser | null
     location: H.Location
     history: H.History
@@ -114,6 +116,7 @@ export const SearchNavbarItem: React.FunctionComponent<Props> = (props: Props) =
                 autoFocus={autoFocus}
                 hideHelpButton={isSearchPage}
                 onHandleFuzzyFinder={setIsFuzzyFinderVisible}
+                isExternalServicesUserModeAll={window.context.externalServicesUserMode === 'all'}
             />
             <Shortcut
                 {...KEYBOARD_SHORTCUT_FUZZY_FINDER.keybindings[0]}

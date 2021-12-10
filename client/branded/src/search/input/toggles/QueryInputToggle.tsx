@@ -4,7 +4,7 @@ import { fromEvent } from 'rxjs'
 import { filter } from 'rxjs/operators'
 import { Key } from 'ts-key-enum'
 
-import { PatternTypeProps, CaseSensitivityProps } from '../..'
+import { CaseSensitivityProps, PatternTypeProps } from '@sourcegraph/shared/src/search'
 
 import styles from './Toggles.module.scss'
 

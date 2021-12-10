@@ -1,10 +1,9 @@
 import { storiesOf } from '@storybook/react'
 import React from 'react'
 
+import { BrandedStory } from '@sourcegraph/branded/src/components/BrandedStory'
+import { AuthenticatedUser } from '@sourcegraph/shared/src/auth'
 import { NOOP_TELEMETRY_SERVICE } from '@sourcegraph/shared/src/telemetry/telemetryService'
-
-import { AuthenticatedUser } from '../../auth'
-import { WebStory } from '../../components/WebStory'
 
 import { SearchContextCtaPrompt } from './SearchContextCtaPrompt'
 
@@ -40,7 +39,7 @@ const authUser: AuthenticatedUser = {
 add(
     'not authenticated',
     () => (
-        <WebStory>
+        <BrandedStory>
             {() => (
                 <SearchContextCtaPrompt
                     telemetryService={NOOP_TELEMETRY_SERVICE}
@@ -49,7 +48,7 @@ add(
                     onDismiss={() => {}}
                 />
             )}
-        </WebStory>
+        </BrandedStory>
     ),
     {}
 )
@@ -57,7 +56,7 @@ add(
 add(
     'authenticated without added external services',
     () => (
-        <WebStory>
+        <BrandedStory>
             {() => (
                 <SearchContextCtaPrompt
                     telemetryService={NOOP_TELEMETRY_SERVICE}
@@ -66,7 +65,7 @@ add(
                     onDismiss={() => {}}
                 />
             )}
-        </WebStory>
+        </BrandedStory>
     ),
     {}
 )
@@ -74,7 +73,7 @@ add(
 add(
     'authenticated with added external services',
     () => (
-        <WebStory>
+        <BrandedStory>
             {() => (
                 <SearchContextCtaPrompt
                     telemetryService={NOOP_TELEMETRY_SERVICE}
@@ -83,7 +82,7 @@ add(
                     onDismiss={() => {}}
                 />
             )}
-        </WebStory>
+        </BrandedStory>
     ),
     {}
 )
@@ -91,7 +90,7 @@ add(
 add(
     'authenticated with private code',
     () => (
-        <WebStory>
+        <BrandedStory>
             {() => (
                 <SearchContextCtaPrompt
                     telemetryService={NOOP_TELEMETRY_SERVICE}
@@ -100,7 +99,7 @@ add(
                     onDismiss={() => {}}
                 />
             )}
-        </WebStory>
+        </BrandedStory>
     ),
     {}
 )
