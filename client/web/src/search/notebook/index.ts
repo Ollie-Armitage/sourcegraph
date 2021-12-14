@@ -12,11 +12,10 @@ import {
     aggregateStreamingSearch,
     AggregateStreamingSearchResults,
     emptyAggregateResults,
+    LATEST_VERSION,
 } from '@sourcegraph/shared/src/search/stream'
 import { asError } from '@sourcegraph/shared/src/util/errors'
 import { renderMarkdown } from '@sourcegraph/shared/src/util/markdown'
-
-import { LATEST_VERSION } from '../results/StreamingSearchResults'
 
 export type BlockType = 'md' | 'query' | 'file'
 

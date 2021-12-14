@@ -163,6 +163,8 @@ export function createExtensionHostAPI(state: ExtensionHostState): FlatExtension
             const document = getTextDocument(textParameters.textDocument.uri)
             const position = toPosition(textParameters.position)
 
+            console.log({ textParameters, document, position })
+
             return proxySubscribable(
                 callProviders(
                     state.definitionProviders,
@@ -294,6 +296,7 @@ export function createExtensionHostAPI(state: ExtensionHostState): FlatExtension
         },
 
         addTextDocumentIfNotExists: textDocumentData => {
+            console.log(textDocumentData)
             if (state.textDocuments.has(textDocumentData.uri)) {
                 return
             }

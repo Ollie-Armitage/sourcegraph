@@ -3,10 +3,9 @@ import * as H from 'history'
 import React from 'react'
 
 import { Link } from '@sourcegraph/shared/src/components/Link'
+import { SearchContextFields } from '@sourcegraph/shared/src/graphql-operations'
 import { Timestamp } from '@sourcegraph/web/src/components/time/Timestamp'
 import { Badge } from '@sourcegraph/wildcard'
-
-import { SearchContextFields } from '../../graphql-operations'
 
 import styles from './SearchContextNode.module.scss'
 

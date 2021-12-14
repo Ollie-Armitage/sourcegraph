@@ -3,8 +3,8 @@ import React from 'react'
 import { NEVER, of } from 'rxjs'
 
 import { EMPTY_SETTINGS_CASCADE } from '@sourcegraph/shared/src/settings/settings'
-import { NOOP_TELEMETRY_SERVICE } from '@sourcegraph/shared/src/telemetry/telemetryService'
 import { extensionsController, HIGHLIGHTED_FILE_LINES_LONG } from '@sourcegraph/shared/src/util/searchTestHelpers'
+import { NOOP_PLATFORM_CONTEXT, NOOP_TELEMETRY_SERVICE } from '@sourcegraph/shared/src/telemetry/telemetryService'
 
 import { WebStory } from '../../components/WebStory'
 import { RepositoryFields } from '../../graphql-operations'
@@ -54,6 +54,7 @@ add('default', () => (
                 extensionsController={extensionsController}
                 fetchRepository={fetchRepository}
                 resolveRevision={resolveRevision}
+                platformContext={NOOP_PLATFORM_CONTEXT}
             />
         )}
     </WebStory>
@@ -79,6 +80,7 @@ add('default read-only', () => (
                 extensionsController={extensionsController}
                 fetchRepository={fetchRepository}
                 resolveRevision={resolveRevision}
+                platformContext={NOOP_PLATFORM_CONTEXT}
             />
         )}
     </WebStory>

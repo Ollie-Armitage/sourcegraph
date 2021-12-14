@@ -45,7 +45,7 @@ export interface StreamingSearchResultsListProps
     footerClassName?: string
     /** Available to web app through JS Context */
     assetsRoot?: string
-    /** TODO EXPLAIN */
+    /** TODO EXPLAIN should be location.search for web */
     executedQuery: string
 
     /** TODO explain */

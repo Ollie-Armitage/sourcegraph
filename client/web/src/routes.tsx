@@ -2,6 +2,7 @@ import * as React from 'react'
 import { Redirect, RouteComponentProps } from 'react-router'
 
 import { ThemeProps } from '@sourcegraph/shared/src/theme'
+import { lazyComponent } from '@sourcegraph/shared/src/util/lazyComponent'
 
 import { BatchChangesProps } from './batches'
 import { CodeIntelligenceProps } from './codeintel'
@@ -13,7 +14,6 @@ import { PageRoutes } from './routes.constants'
 import { useExperimentalFeatures } from './stores'
 import { ThemePreferenceProps } from './theme'
 import { UserExternalServicesOrRepositoriesUpdateProps } from './util'
-import { lazyComponent } from './util/lazyComponent'
 
 const SearchPage = lazyComponent(() => import('./search/home/SearchPage'), 'SearchPage')
 const StreamingSearchResults = lazyComponent(
