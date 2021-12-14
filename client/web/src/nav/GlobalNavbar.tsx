@@ -13,7 +13,14 @@ import { ActivationProps } from '@sourcegraph/shared/src/components/activation/A
 import { ActivationDropdown } from '@sourcegraph/shared/src/components/activation/ActivationDropdown'
 import { Link } from '@sourcegraph/shared/src/components/Link'
 import { ExtensionsControllerProps } from '@sourcegraph/shared/src/extensions/controller'
+import {
+    KeyboardShortcutsProps,
+    KEYBOARD_SHORTCUT_SHOW_COMMAND_PALETTE,
+    KEYBOARD_SHORTCUT_SWITCH_THEME,
+} from '@sourcegraph/shared/src/keyboardShortcuts/keyboardShortcuts'
 import { PlatformContextProps } from '@sourcegraph/shared/src/platform/context'
+import { Settings } from '@sourcegraph/shared/src/schema/settings.schema'
+import { isSearchContextSpecAvailable, PatternTypeProps, SearchContextInputProps } from '@sourcegraph/shared/src/search'
 import { omitFilter } from '@sourcegraph/shared/src/search/query/transformer'
 import { SettingsCascadeProps } from '@sourcegraph/shared/src/settings/settings'
 import { TelemetryProps } from '@sourcegraph/shared/src/telemetry/telemetryService'
@@ -34,21 +41,8 @@ import { CodeMonitoringLogo } from '../code-monitoring/CodeMonitoringLogo'
 import { BrandLogo } from '../components/branding/BrandLogo'
 import { CodeInsightsProps } from '../insights/types'
 import { isCodeInsightsEnabled } from '../insights/utils/is-code-insights-enabled'
-import {
-    KeyboardShortcutsProps,
-    KEYBOARD_SHORTCUT_SHOW_COMMAND_PALETTE,
-    KEYBOARD_SHORTCUT_SWITCH_THEME,
-} from '../keyboardShortcuts/keyboardShortcuts'
 import { LayoutRouteProps } from '../routes'
-import { Settings } from '../schema/settings.schema'
-import {
-    PatternTypeProps,
-    OnboardingTourProps,
-    ParsedSearchQueryProps,
-    isSearchContextSpecAvailable,
-    getGlobalSearchContextFilter,
-    SearchContextInputProps,
-} from '../search'
+import { OnboardingTourProps, ParsedSearchQueryProps, getGlobalSearchContextFilter } from '../search'
 import { SearchNavbarItem } from '../search/input/SearchNavbarItem'
 import { useNavbarQueryState } from '../stores'
 import { ThemePreferenceProps } from '../theme'
@@ -139,9 +133,12 @@ export const GlobalNavbar: React.FunctionComponent<Props> = ({
                       // to prevent flashing and moving content in the query bar. This optimizes for the most common use case where
                       // user selects a search context from the dropdown.
                       // See https://github.com/sourcegraph/sourcegraph/issues/19918 for more info.
-                      isSearchContextSpecAvailable(globalSearchContextSpec.spec).pipe(startWith(true))
+                      isSearchContextSpecAvailable({
+                          spec: globalSearchContextSpec.spec,
+                          platformContext: props.platformContext,
+                      }).pipe(startWith(true))
                     : of(false),
-            [globalSearchContextSpec, searchContextsEnabled]
+            [globalSearchContextSpec, searchContextsEnabled, props.platformContext]
         )
     )
 

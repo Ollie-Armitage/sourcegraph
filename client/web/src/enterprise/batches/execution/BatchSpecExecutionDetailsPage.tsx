@@ -16,6 +16,7 @@ import React, { useCallback, useEffect, useMemo, useReducer, useState } from 're
 import { useHistory } from 'react-router'
 import { delay, distinctUntilChanged, repeatWhen } from 'rxjs/operators'
 
+import { ErrorAlert } from '@sourcegraph/branded/src/components/alerts'
 import { LoadingSpinner } from '@sourcegraph/react-loading-spinner'
 import { Link } from '@sourcegraph/shared/src/components/Link'
 import { BatchSpecState, BatchSpecWorkspaceState } from '@sourcegraph/shared/src/graphql-operations'
@@ -37,7 +38,6 @@ import { Timeline, TimelineStage } from '@sourcegraph/web/src/components/Timelin
 import { Badge, Container, PageHeader, Tab, TabList, TabPanel, TabPanels, Tabs } from '@sourcegraph/wildcard'
 
 import { BatchChangesIcon } from '../../../batches/icons'
-import { ErrorAlert } from '../../../components/alerts'
 import { HeroPage } from '../../../components/HeroPage'
 import { PageTitle } from '../../../components/PageTitle'
 import {

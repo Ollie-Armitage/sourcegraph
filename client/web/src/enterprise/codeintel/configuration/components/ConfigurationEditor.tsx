@@ -2,10 +2,10 @@ import * as H from 'history'
 import { editor } from 'monaco-editor'
 import React, { FunctionComponent, useCallback, useMemo, useState } from 'react'
 
+import { ErrorAlert } from '@sourcegraph/branded/src/components/alerts'
 import { LoadingSpinner } from '@sourcegraph/react-loading-spinner'
 import { TelemetryProps } from '@sourcegraph/shared/src/telemetry/telemetryService'
 import { ThemeProps } from '@sourcegraph/shared/src/theme'
-import { ErrorAlert } from '@sourcegraph/web/src/components/alerts'
 import { SaveToolbarProps, SaveToolbarPropsGenerator } from '@sourcegraph/web/src/components/SaveToolbar'
 
 import { AuthenticatedUser } from '../../../../auth'

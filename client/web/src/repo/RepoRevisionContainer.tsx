@@ -5,6 +5,8 @@ import React, { useCallback, useMemo, useState } from 'react'
 import { Route, RouteComponentProps, Switch } from 'react-router'
 import { Popover } from 'reactstrap'
 
+import { ErrorMessage } from '@sourcegraph/branded/src/components/alerts'
+import { StreamingSearchResultsListProps } from '@sourcegraph/branded/src/search/results/StreamingSearchResultsList'
 import {
     CloneInProgressError,
     isCloneInProgressErrorLike,
@@ -14,6 +16,7 @@ import {
 import { ActivationProps } from '@sourcegraph/shared/src/components/activation/Activation'
 import { ExtensionsControllerProps } from '@sourcegraph/shared/src/extensions/controller'
 import { PlatformContextProps } from '@sourcegraph/shared/src/platform/context'
+import { PatternTypeProps, SearchContextProps } from '@sourcegraph/shared/src/search'
 import { SettingsCascadeProps } from '@sourcegraph/shared/src/settings/settings'
 import { TelemetryProps } from '@sourcegraph/shared/src/telemetry/telemetryService'
 import { ThemeProps } from '@sourcegraph/shared/src/theme'
@@ -23,14 +26,12 @@ import { RevisionSpec } from '@sourcegraph/shared/src/util/url'
 import { AuthenticatedUser } from '../auth'
 import { BatchChangesProps } from '../batches'
 import { CodeIntelligenceProps } from '../codeintel'
-import { ErrorMessage } from '../components/alerts'
 import { BreadcrumbSetters } from '../components/Breadcrumbs'
 import { HeroPage } from '../components/HeroPage'
 import { ActionItemsBarProps } from '../extensions/components/ActionItemsBar'
 import { RepositoryFields } from '../graphql-operations'
 import { CodeInsightsProps } from '../insights/types'
-import { PatternTypeProps, SearchContextProps, SearchStreamingProps } from '../search'
-import { StreamingSearchResultsListProps } from '../search/results/StreamingSearchResultsList'
+import { SearchStreamingProps } from '../search'
 import { RouteDescriptor } from '../util/contributions'
 
 import { CopyPathAction } from './actions/CopyPathAction'
