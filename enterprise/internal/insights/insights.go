@@ -75,7 +75,11 @@ func InitializeCodeInsightsDB(app string) (*sql.DB, error) {
 }
 
 func RegisterMigrations(db database.DB, outOfBandMigrationRunner *oobmigration.Runner) error {
-	timescale, err := InitializeCodeInsightsDB("frontend")
+	if !IsEnabled() {
+		return nil
+	}
+
+	timescale, err := InitializeCodeInsightsDB("worker")
 	if err != nil {
 		return err
 	}
