@@ -3,6 +3,7 @@ import { isObject } from 'lodash'
 import React, { useEffect, useRef } from 'react'
 import { View, MarkupContent } from 'sourcegraph'
 
+import { ErrorAlert } from '@sourcegraph/branded/src/components/alerts'
 import { MarkupKind } from '@sourcegraph/extension-api-classes'
 import { LoadingSpinner } from '@sourcegraph/react-loading-spinner'
 import { ErrorLike } from '@sourcegraph/shared/src/codeintellify/errors'
@@ -10,8 +11,6 @@ import { Markdown } from '@sourcegraph/shared/src/components/Markdown'
 import { TelemetryProps } from '@sourcegraph/shared/src/telemetry/telemetryService'
 import { renderMarkdown } from '@sourcegraph/shared/src/util/markdown'
 import { hasProperty } from '@sourcegraph/shared/src/util/types'
-
-import { ErrorAlert } from '../../../../components/alerts'
 
 import { ChartViewContent, ChartViewContentLayout } from './chart-view-content/ChartViewContent'
 import styles from './ViewContent.module.scss'

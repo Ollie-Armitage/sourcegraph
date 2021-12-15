@@ -45,10 +45,13 @@ export interface StreamingSearchResultsListProps
     footerClassName?: string
     /** Available to web app through JS Context */
     assetsRoot?: string
-    /** TODO EXPLAIN should be location.search for web */
-    executedQuery: string
+    /**
+     * Latest run query. Resets scroll visibility state when changed.
+     * For example, `location.search` on web.
+     * */
+    executedQuery?: string
 
-    /** TODO explain */
+    /** Called when a search result is clicked. */
     onSelect?: (result: SearchMatch) => void
 }
 

@@ -7,8 +7,8 @@ import SourceRepositoryMultipleIcon from 'mdi-react/SourceRepositoryMultipleIcon
 import React, { useEffect, useMemo } from 'react'
 import { catchError, startWith } from 'rxjs/operators'
 
-import { isErrorLike } from '@sourcegraph/shared/src/codeintellify/errors'
 import { SyntaxHighlightedSearchQuery } from '@sourcegraph/branded/src/components/SyntaxHighlightedSearchQuery'
+import { isErrorLike } from '@sourcegraph/shared/src/codeintellify/errors'
 import { ActivationProps } from '@sourcegraph/shared/src/components/activation/Activation'
 import { Link } from '@sourcegraph/shared/src/components/Link'
 import { displayRepoName } from '@sourcegraph/shared/src/components/RepoFileLink'

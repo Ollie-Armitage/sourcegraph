@@ -5,8 +5,8 @@
 // (see https://github.com/sourcegraph/sourcegraph/issues/21200).
 import create from 'zustand'
 
-import { Settings, SettingsCascadeOrError } from '@sourcegraph/shared/src/settings/settings'
 import { SearchQueryState, updateQuery } from '@sourcegraph/shared/src/search/searchQueryState'
+import { Settings, SettingsCascadeOrError } from '@sourcegraph/shared/src/settings/settings'
 
 import { parseSearchURL } from '../search'
 import { submitSearch, canSubmitSearch } from '../search/helpers'

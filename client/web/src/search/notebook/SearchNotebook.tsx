@@ -274,6 +274,7 @@ export const SearchNotebook: React.FunctionComponent<SearchNotebookProps> = ({
             props,
             selectedBlockId,
             sourcegraphSearchLanguageId,
+            platformContext,
         ]
     )
 
