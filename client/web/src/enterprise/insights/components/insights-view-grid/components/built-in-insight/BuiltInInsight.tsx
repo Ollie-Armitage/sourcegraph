@@ -1,9 +1,9 @@
 import classNames from 'classnames'
 import React, { Ref, useContext, useMemo, useState } from 'react'
 
+import { isErrorLike } from '@sourcegraph/common'
 import { ViewContexts } from '@sourcegraph/shared/src/api/extension/extensionHostApi'
 import { TelemetryProps } from '@sourcegraph/shared/src/telemetry/telemetryService'
-import { isErrorLike } from '@sourcegraph/shared/src/util/errors'
 
 import * as View from '../../../../../../views'
 import { LineChartSettingsContext } from '../../../../../../views'

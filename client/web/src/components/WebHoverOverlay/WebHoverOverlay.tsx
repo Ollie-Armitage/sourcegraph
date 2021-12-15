@@ -1,9 +1,9 @@
 import classNames from 'classnames'
 import React, { useCallback, useEffect } from 'react'
 
+import { isErrorLike } from '@sourcegraph/common'
 import { NotificationType } from '@sourcegraph/shared/src/api/extension/extensionHostApi'
 import { HoverOverlay, HoverOverlayProps } from '@sourcegraph/shared/src/hover/HoverOverlay'
-import { isErrorLike } from '@sourcegraph/shared/src/util/errors'
 import { useLocalStorage } from '@sourcegraph/shared/src/util/useLocalStorage'
 
 import { HoverThresholdProps } from '../../repo/RepoContainer'

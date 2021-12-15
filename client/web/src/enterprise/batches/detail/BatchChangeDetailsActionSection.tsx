@@ -3,8 +3,8 @@ import DeleteIcon from 'mdi-react/DeleteIcon'
 import InformationIcon from 'mdi-react/InformationIcon'
 import React, { useCallback, useState } from 'react'
 
+import { isErrorLike, asError } from '@sourcegraph/common'
 import { Link } from '@sourcegraph/shared/src/components/Link'
-import { isErrorLike, asError } from '@sourcegraph/shared/src/util/errors'
 
 import { Scalars } from '../../../graphql-operations'
 

@@ -2,12 +2,13 @@ import classNames from 'classnames'
 import CloseIcon from 'mdi-react/CloseIcon'
 import React, { CSSProperties } from 'react'
 
+import { isErrorLike } from '@sourcegraph/common'
+
 import { ActionItem, ActionItemComponentProps } from '../actions/ActionItem'
 import { NotificationType } from '../api/extension/extensionHostApi'
 import { PlatformContextProps } from '../platform/context'
 import { TelemetryProps } from '../telemetry/telemetryService'
 import { ThemeProps } from '../theme'
-import { isErrorLike } from '../util/errors'
 import { sanitizeClass } from '../util/strings'
 
 import { toNativeEvent } from './helpers'

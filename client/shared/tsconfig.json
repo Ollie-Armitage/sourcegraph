@@ -11,6 +11,6 @@
     "rootDir": ".",
     "outDir": "./out",
   },
-  "include": ["**/*", ".*", "./src/**/*.json"],
+  "include": ["**/*", ".*", "./src/**/*.json", "/client/common/**/*.ts"],
   "exclude": ["../../node_modules", "./node_modules", "./out", "./src/end-to-end"],
 }

@@ -16,11 +16,11 @@ import React, { useCallback, useEffect, useMemo, useReducer, useState } from 're
 import { useHistory } from 'react-router'
 import { delay, distinctUntilChanged, repeatWhen } from 'rxjs/operators'
 
+import { asError, ErrorLike, isErrorLike } from '@sourcegraph/common'
 import { LoadingSpinner } from '@sourcegraph/react-loading-spinner'
 import { Link } from '@sourcegraph/shared/src/components/Link'
 import { BatchSpecState, BatchSpecWorkspaceState } from '@sourcegraph/shared/src/graphql-operations'
 import { ThemeProps } from '@sourcegraph/shared/src/theme'
-import { asError, ErrorLike, isErrorLike } from '@sourcegraph/shared/src/util/errors'
 import { isDefined } from '@sourcegraph/shared/src/util/types'
 import { useObservable } from '@sourcegraph/shared/src/util/useObservable'
 import { Collapsible } from '@sourcegraph/web/src/components/Collapsible'

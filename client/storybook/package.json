@@ -16,6 +16,7 @@
     "test": "jest"
   },
   "devDependencies": {
-    "@sourcegraph/build-config": "0.0.1"
+    "@sourcegraph/build-config": "0.0.1",
+    "@sourcegraph/common": "0.0.1"
   }
 }

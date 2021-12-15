@@ -1,4 +1,4 @@
-import { asError, isErrorLike } from './errors'
+import { asError, isErrorLike } from '@sourcegraph/common'
 
 describe('isErrorLike', () => {
     test('reports true for Error values', () => expect(isErrorLike(new Error('m'))).toBeTruthy())

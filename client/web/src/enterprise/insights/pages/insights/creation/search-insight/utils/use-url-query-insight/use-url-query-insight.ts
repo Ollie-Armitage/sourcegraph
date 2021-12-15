@@ -1,9 +1,9 @@
 import { useContext, useEffect, useState } from 'react'
 
+import { ErrorLike, asError } from '@sourcegraph/common'
 import { stringHuman } from '@sourcegraph/shared/src/search/query/printer'
 import { scanSearchQuery } from '@sourcegraph/shared/src/search/query/scanner'
 import { isRepoFilter } from '@sourcegraph/shared/src/search/query/validate'
-import { ErrorLike, asError } from '@sourcegraph/shared/src/util/errors'
 import { dedupeWhitespace } from '@sourcegraph/shared/src/util/strings'
 
 import { CodeInsightsBackendContext } from '../../../../../../core/backend/code-insights-backend-context'
