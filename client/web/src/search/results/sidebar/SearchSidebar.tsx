@@ -9,6 +9,7 @@ import { Filter } from '@sourcegraph/shared/src/search/stream'
 import { SettingsCascadeProps } from '@sourcegraph/shared/src/settings/settings'
 import { TelemetryProps } from '@sourcegraph/shared/src/telemetry/telemetryService'
 
+import { GettingStartedTour } from '../../../getting-started-tour/GettingStartedTour'
 import { TemporarySettings } from '../../../settings/temporary/TemporarySettings'
 import { useTemporarySetting } from '../../../settings/temporary/useTemporarySetting'
 import { useNavbarQueryState } from '../../../stores'
@@ -126,6 +127,7 @@ export const SearchSidebar: React.FunctionComponent<SearchSidebarProps> = props 
     if (collapsedSections) {
         body = (
             <StickyBox className={styles.searchSidebarStickyBox}>
+                <GettingStartedTour className={styles.gettingStartedTour} />
                 <SearchSidebarSection
                     sectionId={SectionID.SEARCH_TYPES}
                     className={styles.searchSidebarItem}

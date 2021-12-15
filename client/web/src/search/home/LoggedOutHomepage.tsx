@@ -9,6 +9,7 @@ import { ThemeProps } from '@sourcegraph/shared/src/theme'
 import { communitySearchContextsList } from '../../communitySearchContexts/HomepageConfig'
 import { SyntaxHighlightedSearchQuery } from '../../components/SyntaxHighlightedSearchQuery'
 import { FeatureFlagProps } from '../../featureFlags/featureFlags'
+import { GettingStartedTour } from '../../getting-started-tour/GettingStartedTour'
 import { ModalVideo } from '../documentation/ModalVideo'
 
 import { CustomersSection } from './CustomersSection'
@@ -76,6 +77,8 @@ export const LoggedOutHomepage: React.FunctionComponent<LoggedOutHomepageProps> 
         <div className={styles.loggedOutHomepage}>
             <VulnerabilityAnnouncement />
             <div className={styles.helpContent}>
+                <GettingStartedTour className={styles.gettingStartedTour} />
+
                 {props.featureFlags.get('search-notebook-onboarding') ? (
                     <SearchExamples
                         title="Search notebooks"
