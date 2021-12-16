@@ -1,0 +1,9 @@
+.card-header {
+    padding: var(--card-spacer-y) var(--card-spacer-x);
+    background-color: var(--color-bg-2);
+    border-bottom: 1px solid var(--card-border-color);
+
+    &:first-child {
+        border-radius: 0.25rem 0.25rem 0 0;
+    }
+}
