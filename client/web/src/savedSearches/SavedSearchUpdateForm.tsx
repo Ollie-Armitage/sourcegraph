@@ -13,10 +13,10 @@ import {
     tap,
 } from 'rxjs/operators'
 
-import { LoadingSpinner } from '@sourcegraph/react-loading-spinner'
 import { Scalars } from '@sourcegraph/shared/src/graphql-operations'
 import * as GQL from '@sourcegraph/shared/src/graphql/schema'
 import { asError, ErrorLike, isErrorLike } from '@sourcegraph/shared/src/util/errors'
+import { LoadingSpinner } from '@sourcegraph/wildcard'
 
 import { AuthenticatedUser } from '../auth'
 import { NamespaceProps } from '../namespaces'

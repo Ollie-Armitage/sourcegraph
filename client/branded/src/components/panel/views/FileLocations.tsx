@@ -8,7 +8,6 @@ import { catchError, distinctUntilChanged, map, startWith, switchMap } from 'rxj
 import { Badged } from 'sourcegraph'
 
 import { Location } from '@sourcegraph/extension-api-types'
-import { LoadingSpinner } from '@sourcegraph/react-loading-spinner'
 import { FetchFileParameters } from '@sourcegraph/shared/src/components/CodeExcerpt'
 import { FileMatch } from '@sourcegraph/shared/src/components/FileMatch'
 import { VirtualList } from '@sourcegraph/shared/src/components/VirtualList'
@@ -18,6 +17,7 @@ import { TelemetryProps } from '@sourcegraph/shared/src/telemetry/telemetryServi
 import { asError, ErrorLike, isErrorLike } from '@sourcegraph/shared/src/util/errors'
 import { isDefined, property } from '@sourcegraph/shared/src/util/types'
 import { parseRepoURI } from '@sourcegraph/shared/src/util/url'
+import { LoadingSpinner } from '@sourcegraph/wildcard'
 
 import styles from './FileLocations.module.scss'
 

@@ -3,7 +3,6 @@ import React, { useCallback, useEffect, useMemo, useState } from 'react'
 import { EMPTY, Observable } from 'rxjs'
 import { catchError, tap } from 'rxjs/operators'
 
-import { LoadingSpinner } from '@sourcegraph/react-loading-spinner'
 import { Link } from '@sourcegraph/shared/src/components/Link'
 import { gql } from '@sourcegraph/shared/src/graphql/graphql'
 import { TelemetryProps } from '@sourcegraph/shared/src/telemetry/telemetryService'
@@ -19,7 +18,7 @@ import {
 } from '@sourcegraph/web/src/components/FilteredConnection'
 import { PageTitle } from '@sourcegraph/web/src/components/PageTitle'
 import { SelfHostedCtaLink } from '@sourcegraph/web/src/components/SelfHostedCtaLink'
-import { Container, PageHeader, ProductStatusBadge } from '@sourcegraph/wildcard'
+import { Container, PageHeader, ProductStatusBadge, LoadingSpinner } from '@sourcegraph/wildcard'
 
 import { requestGraphQL } from '../../../backend/graphql'
 import {

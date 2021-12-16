@@ -3,9 +3,9 @@ import React, { useCallback } from 'react'
 import { Observable, throwError } from 'rxjs'
 import { mergeMap, startWith, tap, catchError } from 'rxjs/operators'
 
-import { LoadingSpinner } from '@sourcegraph/react-loading-spinner'
 import { asError, isErrorLike } from '@sourcegraph/shared/src/util/errors'
 import { useEventObservable } from '@sourcegraph/shared/src/util/useObservable'
+import { LoadingSpinner } from '@sourcegraph/wildcard'
 
 import { CodeMonitorFormProps } from './CodeMonitorForm'
 

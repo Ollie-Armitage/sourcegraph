@@ -16,7 +16,7 @@ import { filter, switchMap } from 'rxjs/operators'
 import stringScore from 'string-score'
 import { Key } from 'ts-key-enum'
 
-import { LoadingSpinner } from '@sourcegraph/react-loading-spinner'
+import { LoadingSpinner } from '@sourcegraph/wildcard'
 
 import { ActionItem, ActionItemAction } from '../actions/ActionItem'
 import { wrapRemoteObservable } from '../api/client/api/common'

@@ -2,10 +2,10 @@ import { Tab, TabList, TabPanel, TabPanels, Tabs } from '@reach/tabs'
 import classNames from 'classnames'
 import React from 'react'
 
-import { LoadingSpinner } from '@sourcegraph/react-loading-spinner'
 import { dataOrThrowErrors, gql } from '@sourcegraph/shared/src/graphql/graphql'
 import { GitRefType } from '@sourcegraph/shared/src/graphql/schema'
 import { FilterType } from '@sourcegraph/shared/src/search/query/filters'
+import { LoadingSpinner } from '@sourcegraph/wildcard'
 
 import { useConnection } from '../../../components/FilteredConnection/hooks/useConnection'
 import { SyntaxHighlightedSearchQuery } from '../../../components/SyntaxHighlightedSearchQuery'

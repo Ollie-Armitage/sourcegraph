@@ -3,11 +3,11 @@ import React, { useCallback, useMemo } from 'react'
 import { Observable } from 'rxjs'
 import { catchError, map, startWith, tap } from 'rxjs/operators'
 
-import { LoadingSpinner } from '@sourcegraph/react-loading-spinner'
 import { gql } from '@sourcegraph/shared/src/graphql/graphql'
 import * as GQL from '@sourcegraph/shared/src/graphql/schema'
 import { asError, createAggregateError, isErrorLike } from '@sourcegraph/shared/src/util/errors'
 import { useObservable } from '@sourcegraph/shared/src/util/useObservable'
+import { LoadingSpinner } from '@sourcegraph/wildcard'
 
 import { queryGraphQL } from '../../../backend/graphql'
 import { ErrorAlert } from '../../../components/alerts'

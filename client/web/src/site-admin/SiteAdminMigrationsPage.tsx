@@ -9,10 +9,10 @@ import { Observable, of, timer } from 'rxjs'
 import { catchError, concatMap, delay, map, repeatWhen, takeWhile } from 'rxjs/operators'
 import { parse as _parseVersion, SemVer } from 'semver'
 
-import { LoadingSpinner } from '@sourcegraph/react-loading-spinner'
 import { TelemetryProps } from '@sourcegraph/shared/src/telemetry/telemetryService'
 import { asError, ErrorLike, isErrorLike } from '@sourcegraph/shared/src/util/errors'
 import { useObservable } from '@sourcegraph/shared/src/util/useObservable'
+import { LoadingSpinner } from '@sourcegraph/wildcard'
 
 import { ErrorAlert } from '../components/alerts'
 import { Collapsible } from '../components/Collapsible'

@@ -2,7 +2,7 @@ import classNames from 'classnames'
 import { upperFirst } from 'lodash'
 import React from 'react'
 
-import { LoadingSpinner } from '@sourcegraph/react-loading-spinner'
+import { LoadingSpinner } from '@sourcegraph/wildcard'
 
 import { isErrorLike } from '../../util/errors'
 import hoverOverlayStyle from '../HoverOverlay.module.scss'

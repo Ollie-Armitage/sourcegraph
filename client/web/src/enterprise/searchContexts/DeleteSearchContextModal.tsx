@@ -4,11 +4,11 @@ import { useHistory } from 'react-router'
 import { Observable } from 'rxjs'
 import { mergeMap, startWith, tap, catchError } from 'rxjs/operators'
 
-import { LoadingSpinner } from '@sourcegraph/react-loading-spinner'
 import { ISearchContext } from '@sourcegraph/shared/src/graphql/schema'
 import { asError, isErrorLike } from '@sourcegraph/shared/src/util/errors'
 import { useEventObservable } from '@sourcegraph/shared/src/util/useObservable'
 import { ALLOW_NAVIGATION } from '@sourcegraph/web/src/components/AwayPrompt'
+import { LoadingSpinner } from '@sourcegraph/wildcard'
 
 import { SearchContextProps } from '../../search'
 

@@ -4,9 +4,9 @@ import classNames from 'classnames'
 import CloseIcon from 'mdi-react/CloseIcon'
 import React, { useContext, useMemo } from 'react'
 
-import { LoadingSpinner } from '@sourcegraph/react-loading-spinner'
 import { asError } from '@sourcegraph/shared/src/util/errors'
 import { useObservable } from '@sourcegraph/shared/src/util/useObservable'
+import { LoadingSpinner } from '@sourcegraph/wildcard'
 
 import { FORM_ERROR, SubmissionErrors } from '../../../../../components/form/hooks/useForm'
 import { CodeInsightsBackendContext } from '../../../../../core/backend/code-insights-backend-context'

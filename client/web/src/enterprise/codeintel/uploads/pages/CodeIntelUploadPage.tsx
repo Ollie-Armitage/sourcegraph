@@ -6,7 +6,6 @@ import { Redirect, RouteComponentProps } from 'react-router'
 import { Observable } from 'rxjs'
 import { takeWhile } from 'rxjs/operators'
 
-import { LoadingSpinner } from '@sourcegraph/react-loading-spinner'
 import { LSIFUploadState } from '@sourcegraph/shared/src/graphql-operations'
 import { TelemetryProps } from '@sourcegraph/shared/src/telemetry/telemetryService'
 import { ErrorLike, isErrorLike } from '@sourcegraph/shared/src/util/errors'
@@ -15,7 +14,7 @@ import {
     FilteredConnection,
     FilteredConnectionQueryArguments,
 } from '@sourcegraph/web/src/components/FilteredConnection'
-import { Button, Container, PageHeader } from '@sourcegraph/wildcard'
+import { Button, Container, PageHeader, LoadingSpinner } from '@sourcegraph/wildcard'
 
 import { AuthenticatedUser } from '../../../../auth'
 import { ErrorAlert } from '../../../../components/alerts'

@@ -5,7 +5,7 @@ import FileUploadIcon from 'mdi-react/FileUploadIcon'
 import TimerSandIcon from 'mdi-react/TimerSandIcon'
 import React, { FunctionComponent } from 'react'
 
-import { LoadingSpinner } from '@sourcegraph/react-loading-spinner'
+import { LoadingSpinner } from '@sourcegraph/wildcard'
 
 import { LSIFIndexState, LSIFUploadState } from '../../../../graphql-operations'
 

@@ -1,8 +1,8 @@
 import classNames from 'classnames'
 import React from 'react'
 
-import { LoadingSpinner } from '@sourcegraph/react-loading-spinner'
 import { AggregateStreamingSearchResults } from '@sourcegraph/shared/src/search/stream'
+import { LoadingSpinner } from '@sourcegraph/wildcard'
 
 import { ErrorAlert } from '../../components/alerts'
 

@@ -2,11 +2,11 @@ import { mapValues, values } from 'lodash'
 import React, { useMemo } from 'react'
 import { RouteComponentProps } from 'react-router'
 
-import { LoadingSpinner } from '@sourcegraph/react-loading-spinner'
 import { ExternalServiceKind } from '@sourcegraph/shared/src/graphql-operations'
 import { TelemetryProps } from '@sourcegraph/shared/src/telemetry/telemetryService'
 import { ThemeProps } from '@sourcegraph/shared/src/theme'
 import { useObservable } from '@sourcegraph/shared/src/util/useObservable'
+import { LoadingSpinner } from '@sourcegraph/wildcard'
 
 import awsCodeCommitJSON from '../../../../schema/aws_codecommit.schema.json'
 import bitbucketCloudSchemaJSON from '../../../../schema/bitbucket_cloud.schema.json'

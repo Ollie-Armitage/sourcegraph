@@ -3,10 +3,10 @@ import MapSearchIcon from 'mdi-react/MapSearchIcon'
 import React from 'react'
 import { Route, RouteComponentProps, Switch } from 'react-router'
 
-import { LoadingSpinner } from '@sourcegraph/react-loading-spinner'
 import { gql, useQuery } from '@sourcegraph/shared/src/graphql/graphql'
 import { TelemetryProps } from '@sourcegraph/shared/src/telemetry/telemetryService'
 import { ThemeProps } from '@sourcegraph/shared/src/theme'
+import { LoadingSpinner } from '@sourcegraph/wildcard'
 
 import { AuthenticatedUser } from '../../auth'
 import { withAuthenticatedUser } from '../../auth/withAuthenticatedUser'

@@ -4,8 +4,8 @@ import * as React from 'react'
 import { Link, RouteComponentProps } from 'react-router-dom'
 
 import { Form } from '@sourcegraph/branded/src/components/Form'
-import { LoadingSpinner } from '@sourcegraph/react-loading-spinner'
 import { asError, ErrorLike, isErrorLike } from '@sourcegraph/shared/src/util/errors'
+import { LoadingSpinner } from '@sourcegraph/wildcard'
 
 import { AuthenticatedUser } from '../auth'
 import { ErrorAlert } from '../components/alerts'

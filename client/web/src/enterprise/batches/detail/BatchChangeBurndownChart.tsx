@@ -14,9 +14,8 @@ import {
 } from 'recharts'
 
 import { Toggle } from '@sourcegraph/branded/src/components/Toggle'
-import { LoadingSpinner } from '@sourcegraph/react-loading-spinner'
 import { useObservable } from '@sourcegraph/shared/src/util/useObservable'
-import { Container } from '@sourcegraph/wildcard'
+import { Container, LoadingSpinner } from '@sourcegraph/wildcard'
 
 import { ChangesetCountsOverTimeFields, Scalars } from '../../../graphql-operations'
 

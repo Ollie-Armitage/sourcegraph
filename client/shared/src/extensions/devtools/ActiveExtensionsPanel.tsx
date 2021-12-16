@@ -2,7 +2,7 @@ import React, { useCallback, useMemo } from 'react'
 import { from } from 'rxjs'
 import { catchError, switchMap } from 'rxjs/operators'
 
-import { LoadingSpinner } from '@sourcegraph/react-loading-spinner'
+import { LoadingSpinner } from '@sourcegraph/wildcard'
 
 import { wrapRemoteObservable } from '../../api/client/api/common'
 import { Link } from '../../components/Link'

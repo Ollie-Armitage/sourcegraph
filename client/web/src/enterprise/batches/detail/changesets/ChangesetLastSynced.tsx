@@ -5,8 +5,8 @@ import InfoCircleOutlineIcon from 'mdi-react/InfoCircleOutlineIcon'
 import SyncIcon from 'mdi-react/SyncIcon'
 import React, { useState, useEffect, useCallback } from 'react'
 
-import { LoadingSpinner } from '@sourcegraph/react-loading-spinner'
 import { isErrorLike } from '@sourcegraph/shared/src/util/errors'
+import { LoadingSpinner } from '@sourcegraph/wildcard'
 
 import { ExternalChangesetFields, HiddenExternalChangesetFields } from '../../../../graphql-operations'
 import { syncChangeset } from '../backend'

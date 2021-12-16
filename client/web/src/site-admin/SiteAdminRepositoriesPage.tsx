@@ -6,9 +6,9 @@ import { RouteComponentProps } from 'react-router'
 import { Link } from 'react-router-dom'
 import { Observable } from 'rxjs'
 
-import { LoadingSpinner } from '@sourcegraph/react-loading-spinner'
 import { RepoLink } from '@sourcegraph/shared/src/components/RepoLink'
 import { TelemetryProps } from '@sourcegraph/shared/src/telemetry/telemetryService'
+import { LoadingSpinner } from '@sourcegraph/wildcard'
 
 import {
     FilteredConnection,

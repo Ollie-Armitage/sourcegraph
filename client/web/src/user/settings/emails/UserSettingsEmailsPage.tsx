@@ -1,11 +1,10 @@
 import classNames from 'classnames'
 import React, { FunctionComponent, useEffect, useState, useCallback } from 'react'
 
-import { LoadingSpinner } from '@sourcegraph/react-loading-spinner'
 import { gql, dataOrThrowErrors } from '@sourcegraph/shared/src/graphql/graphql'
 import { asError, ErrorLike, isErrorLike } from '@sourcegraph/shared/src/util/errors'
 import { useObservable } from '@sourcegraph/shared/src/util/useObservable'
-import { Container, PageHeader } from '@sourcegraph/wildcard'
+import { Container, PageHeader, LoadingSpinner } from '@sourcegraph/wildcard'
 
 import { requestGraphQL } from '../../../backend/graphql'
 import { ErrorAlert } from '../../../components/alerts'

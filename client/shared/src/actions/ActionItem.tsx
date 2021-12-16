@@ -5,7 +5,7 @@ import * as React from 'react'
 import { from, Subject, Subscription } from 'rxjs'
 import { catchError, map, mapTo, mergeMap, startWith, tap } from 'rxjs/operators'
 
-import { LoadingSpinner } from '@sourcegraph/react-loading-spinner'
+import { LoadingSpinner } from '@sourcegraph/wildcard'
 
 import { ExecuteCommandParameters } from '../api/client/mainthread-api'
 import { ActionContribution, Evaluated } from '../api/protocol'

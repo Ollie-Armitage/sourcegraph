@@ -1,9 +1,9 @@
 import * as H from 'history'
 import React, { useCallback, useState } from 'react'
 
-import { LoadingSpinner } from '@sourcegraph/react-loading-spinner'
 import { isErrorLike, asError } from '@sourcegraph/shared/src/util/errors'
 import { pluralize } from '@sourcegraph/shared/src/util/strings'
+import { LoadingSpinner } from '@sourcegraph/wildcard'
 
 import { ErrorAlert } from '../../../components/alerts'
 import { Scalars } from '../../../graphql-operations'

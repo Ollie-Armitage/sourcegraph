@@ -3,9 +3,8 @@ import MapSearchIcon from 'mdi-react/MapSearchIcon'
 import React, { useContext, useMemo } from 'react'
 import { Link } from 'react-router-dom'
 
-import { LoadingSpinner } from '@sourcegraph/react-loading-spinner'
 import { useObservable } from '@sourcegraph/shared/src/util/useObservable'
-import { Badge } from '@sourcegraph/wildcard'
+import { Badge, LoadingSpinner } from '@sourcegraph/wildcard'
 
 import { AuthenticatedUser } from '../../../../../auth'
 import { HeroPage } from '../../../../../components/HeroPage'
