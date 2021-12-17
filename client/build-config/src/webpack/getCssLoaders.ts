@@ -2,7 +2,7 @@ import path from 'path'
 
 import webpack from 'webpack'
 
-import { ROOT_PATH } from '../paths'
+import { ROOT_PATH, NODE_MODULES_PATH } from '../paths'
 
 /**
  * Generates array of CSS loaders both for regular CSS and CSS modules.
@@ -15,8 +15,30 @@ export const getCSSLoaders = (...loaders: webpack.RuleSetUseItem[]): webpack.Rul
         loader: 'sass-loader',
         options: {
             sassOptions: {
-                includePaths: [path.resolve(ROOT_PATH, 'node_modules'), path.resolve(ROOT_PATH, 'client')],
+                includePaths: [NODE_MODULES_PATH, path.resolve(ROOT_PATH, 'client')],
             },
         },
     },
 ]
+
+interface getCssModulesLoaderProperty {
+    loader: string
+    options: object
+    url?: boolean
+}
+
+export const getCssModulesLoader = (
+    loader: string,
+    sourceMap: boolean,
+    url?: boolean
+): getCssModulesLoaderProperty => ({
+    loader,
+    options: {
+        sourceMap,
+        modules: {
+            exportLocalsConvention: 'camelCase',
+            localIdentName: '[name]__[local]_[hash:base64:5]',
+        },
+        url,
+    },
+})
