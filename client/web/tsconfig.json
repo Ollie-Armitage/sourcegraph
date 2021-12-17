@@ -15,7 +15,8 @@
     { "path": "../branded" },
     { "path": "../../schema" },
     { "path": "../storybook" },
+    { "path": "../common" },
   ],
-  "include": ["**/*", ".*", "./src/**/*.json"],
+  "include": ["**/*", ".*", "./src/**/*.json", "/client/common/**/*.ts"],
   "exclude": ["../../node_modules", "./node_modules", "./out", "src/end-to-end", "src/regression", "src/integration"],
 }

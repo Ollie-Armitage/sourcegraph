@@ -36,6 +36,7 @@ import {
 } from 'rxjs/operators'
 import { NotificationType, HoverAlert } from 'sourcegraph'
 
+import { isDefined } from '@sourcegraph/common'
 import { TextDocumentDecoration, WorkspaceRoot } from '@sourcegraph/extension-api-types'
 import { ActionItemAction } from '@sourcegraph/shared/src/actions/ActionItem'
 import { wrapRemoteObservable } from '@sourcegraph/shared/src/api/client/api/common'
@@ -69,7 +70,7 @@ import { ThemeProps } from '@sourcegraph/shared/src/theme'
 import { isFirefox } from '@sourcegraph/shared/src/util/browserDetection'
 import { asError } from '@sourcegraph/shared/src/util/errors'
 import { asObservable } from '@sourcegraph/shared/src/util/rxjs/asObservable'
-import { isDefined, isInstanceOf, property } from '@sourcegraph/shared/src/util/types'
+import { isInstanceOf, property } from '@sourcegraph/shared/src/util/types'
 import {
     FileSpec,
     UIPositionSpec,

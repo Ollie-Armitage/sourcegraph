@@ -6,6 +6,7 @@ import { Route, RouteComponentProps, Switch } from 'react-router'
 import { combineLatest, from, Observable, of, Subject, Subscription } from 'rxjs'
 import { catchError, distinctUntilChanged, map, startWith, switchMap } from 'rxjs/operators'
 
+import { isDefined } from '@sourcegraph/common'
 import { getConfiguredSideloadedExtension } from '@sourcegraph/shared/src/api/client/enabledExtensions'
 import { extensionIDsFromSettings } from '@sourcegraph/shared/src/extensions/extension'
 import { queryConfiguredRegistryExtensions } from '@sourcegraph/shared/src/extensions/helpers'
@@ -17,7 +18,6 @@ import { gqlToCascade, SettingsCascadeProps } from '@sourcegraph/shared/src/sett
 import { TelemetryProps } from '@sourcegraph/shared/src/telemetry/telemetryService'
 import { ThemeProps } from '@sourcegraph/shared/src/theme'
 import { asError, createAggregateError, ErrorLike, isErrorLike } from '@sourcegraph/shared/src/util/errors'
-import { isDefined } from '@sourcegraph/shared/src/util/types'
 import { PageHeader } from '@sourcegraph/wildcard'
 
 import { AuthenticatedUser } from '../auth'

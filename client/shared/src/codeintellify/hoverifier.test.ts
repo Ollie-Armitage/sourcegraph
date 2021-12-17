@@ -3,10 +3,11 @@ import { EMPTY, NEVER, Observable, of, Subject, Subscription } from 'rxjs'
 import { delay, distinctUntilChanged, filter, first, map, takeWhile } from 'rxjs/operators'
 import { TestScheduler } from 'rxjs/testing'
 
+import { isDefined } from '@sourcegraph/common'
 import { Range } from '@sourcegraph/extension-api-types'
 
 import { ErrorLike } from './errors'
-import { isDefined, propertyIsDefined } from './helpers'
+import { propertyIsDefined } from './helpers'
 import {
     AdjustmentDirection,
     createHoverifier,

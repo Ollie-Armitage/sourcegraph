@@ -8,5 +8,8 @@
     "eslint": "eslint --cache '**/*.[jt]s?(x)'",
     "stylelint": "stylelint 'src/**/*.scss' --quiet",
     "test": "jest"
+  },
+  "dependencies": {
+    "@sourcegraph/common": "0.0.1"
   }
 }

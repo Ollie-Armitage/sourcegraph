@@ -13,5 +13,8 @@
     "graphql-operations": "gulp graphQlOperations",
     "watch-schema": "gulp watchSchema"
   },
+  "dependencies": {
+    "@sourcegraph/common": "0.0.1"
+  },
   "sideEffects": true
 }

@@ -35,5 +35,8 @@
   },
   "jest": {
     "testURL": "http://localhost:3080"
+  },
+  "dependencies": {
+    "@sourcegraph/common": "0.0.1"
   }
 }

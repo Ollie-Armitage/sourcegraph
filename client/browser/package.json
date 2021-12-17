@@ -35,5 +35,8 @@
   "browserslist": [
     "last 3 Chrome versions",
     "last 3 Firefox versions"
-  ]
+  ],
+  "dependencies": {
+    "@sourcegraph/common": "0.0.1"
+  }
 }

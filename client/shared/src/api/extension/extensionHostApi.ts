@@ -12,13 +12,14 @@ import {
 } from 'rxjs/operators'
 import * as sourcegraph from 'sourcegraph'
 
+import { isDefined } from '@sourcegraph/common'
 import * as clientType from '@sourcegraph/extension-api-types'
 import { LOADING, MaybeLoadingResult } from '@sourcegraph/shared/src/codeintellify'
 
 import { getModeFromPath } from '../../languages'
 import { asError, ErrorLike } from '../../util/errors'
 import { combineLatestOrDefault } from '../../util/rxjs/combineLatestOrDefault'
-import { allOf, isDefined, isExactly, isNot, property } from '../../util/types'
+import { allOf, isExactly, isNot, property } from '../../util/types'
 import { parseRepoURI } from '../../util/url'
 import { fromHoverMerged } from '../client/types/hover'
 import { match, TextDocumentIdentifier } from '../client/types/textDocument'

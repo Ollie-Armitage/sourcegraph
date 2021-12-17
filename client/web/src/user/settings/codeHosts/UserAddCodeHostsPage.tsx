@@ -1,10 +1,11 @@
 import React, { useCallback, useState, useEffect } from 'react'
 
+import { isDefined } from '@sourcegraph/common'
 import { LoadingSpinner } from '@sourcegraph/react-loading-spinner'
 import { Link } from '@sourcegraph/shared/src/components/Link'
 import { TelemetryProps } from '@sourcegraph/shared/src/telemetry/telemetryService'
 import { asError, ErrorLike, isErrorLike } from '@sourcegraph/shared/src/util/errors'
-import { isDefined, keyExistsIn } from '@sourcegraph/shared/src/util/types'
+import { keyExistsIn } from '@sourcegraph/shared/src/util/types'
 import { SelfHostedCta } from '@sourcegraph/web/src/components/SelfHostedCta'
 import { Container, PageHeader } from '@sourcegraph/wildcard'
 
