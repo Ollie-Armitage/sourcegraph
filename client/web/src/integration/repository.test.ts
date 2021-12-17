@@ -35,6 +35,7 @@ export const getCommonRepositoryGraphQlResults = (
     RepoChangesetsStats: () => createRepoChangesetsStatsResult(),
     ResolveRev: () => createResolveRevisionResult(repositoryName),
     FileExternalLinks: ({ filePath }) => createFileExternalLinksResult(filePath),
+    FileNames: () => ({ repository: { commit: { fileNames: fileEntries } } }),
     TreeEntries: () => createTreeEntriesResult(repositoryUrl, fileEntries),
     TreeCommits: () => ({
         node: {
