@@ -2,6 +2,7 @@ package authz
 
 import (
 	"context"
+	"fmt"
 	"path"
 	"strconv"
 	"time"
@@ -330,4 +331,18 @@ func FilterActorPaths(ctx context.Context, checker SubRepoPermissionChecker, a *
 		}
 	}
 	return filtered, nil
+}
+
+func HasAccessToPath(ctx context.Context, checker SubRepoPermissionChecker, repo api.RepoName, path string) (bool, error) {
+	a := actor.FromContext(ctx)
+	filtered, err := FilterActorPaths(ctx, checker, a, repo, []string{path})
+	if err != nil {
+		return false, errors.Wrap(err, "filtering path")
+	}
+	fmt.Printf("Filtered: %v\n", filtered)
+	// Expect to get []string{path} back if user has access to this file, otherwise they don't.
+	if len(filtered) != 1 || filtered[0] != path {
+		return false, nil
+	}
+	return true, nil
 }
