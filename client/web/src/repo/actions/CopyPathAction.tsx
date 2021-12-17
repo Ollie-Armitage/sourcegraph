@@ -4,7 +4,7 @@ import ContentCopyIcon from 'mdi-react/ContentCopyIcon'
 import React, { useState, useLayoutEffect } from 'react'
 import { useLocation } from 'react-router'
 
-import { Tooltip } from '@sourcegraph/branded/src/components/tooltip/Tooltip'
+import { Tooltip } from '@sourcegraph/wildcard'
 
 import { eventLogger } from '../../tracking/eventLogger'
 import { parseBrowserRepoURL } from '../../util/url'

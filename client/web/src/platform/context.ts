@@ -1,7 +1,6 @@
 import { ApolloQueryResult, ObservableQuery } from '@apollo/client'
 import { map, publishReplay, refCount, shareReplay } from 'rxjs/operators'
 
-import { Tooltip } from '@sourcegraph/branded/src/components/tooltip/Tooltip'
 import { fromObservableQueryPromise, getDocumentNode, gql } from '@sourcegraph/shared/src/graphql/graphql'
 import * as GQL from '@sourcegraph/shared/src/graphql/schema'
 import { PlatformContext } from '@sourcegraph/shared/src/platform/context'
@@ -18,6 +17,7 @@ import {
     UIRangeSpec,
     appendSubtreeQueryParameter,
 } from '@sourcegraph/shared/src/util/url'
+import { Tooltip } from '@sourcegraph/wildcard'
 
 import { getWebGraphQLClient, requestGraphQL } from '../backend/graphql'
 import { ViewerSettingsResult, ViewerSettingsVariables } from '../graphql-operations'
